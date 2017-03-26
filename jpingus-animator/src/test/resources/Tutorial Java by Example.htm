@@ -1,0 +1,415 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0054)http://www.programming.de/java_tutorial/j_tutor09.html -->
+<HTML><HEAD><TITLE>Tutorial: Java by Example</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252"><LINK 
+href="Tutorial Java by Example_files/jt_style.css" type=text/css rel=stylesheet>
+<META content="MSHTML 5.50.4522.1800" name=GENERATOR></HEAD>
+<BODY bgColor=#f5f5f5 
+background="Tutorial Java by Example_files/checkers_bg.gif">
+<TABLE cellPadding=5 width="95%" align=center>
+  <TBODY>
+  <TR>
+    <TD><FONT color=#7d7dff size=4><B>Java by Example</B> - <I>animation with 
+      GIF pictures, sprite animation</I></FONT> 
+      <P>
+      <TABLE borderColor=gray cellSpacing=0 cellPadding=0 bgColor=white 
+border=1>
+        <TBODY>
+        <TR>
+          <TD align=middle width=30><A 
+            href="http://www.programming.de/java_tutorial/j_tutor08.html"><IMG 
+            height=8 alt=back src="Tutorial Java by Example_files/rr.gif" 
+            width=8 border=0></A></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor01.html">1</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor02.html">2</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor03.html">3</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor04.html">4</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor05.html">5</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor06.html">6</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor07.html">7</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor08.html">8</A></FONT></TD>
+          <TD align=middle width=25 bgColor=yellow><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor09.html">9</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor10.html">10</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor11.html">11</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor12.html">12</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor13.html">13</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor14.html">14</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor15.html">15</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor16.html">16</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor17.html">17</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor18.html">18</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor19.html">19</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor20.html">20</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor21.html">21</A></FONT></TD>
+          <TD align=middle width=30><A 
+            href="http://www.programming.de/java_tutorial/j_tutor10.html"><IMG 
+            height=8 alt=next src="Tutorial Java by Example_files/ff.gif" 
+            width=8 border=0></A></TD></TR></TBODY></TABLE>
+      <P><FONT size=2>This applet presents nothing new, but combines the 
+      techniques of flicker free animation and the use of GIF and JPEG graphics. 
+      The background picture, which contains lots of colors, but doesn't have to 
+      be very sharp or detailled is a highly compressed JPEG, the snail a GIF 
+      with transparency index color. 
+      <P><APPLET code=Project11.class width=300 height=300><PARAM NAME="code" VALUE="Project11.class"><PARAM NAME="width" VALUE="300"><PARAM NAME="height" VALUE="300"><PARAM NAME="codeBase" VALUE="http://www.programming.de/java_tutorial/"></APPLET> 
+
+      <P>
+      <TABLE cellPadding=5 width="100%" bgColor=#ffffde>
+        <TBODY>
+        <TR>
+          <TD><FONT color=red size=2>//<I><B>Sourcecode</B></I> 
+            <P><FONT face=verdana color=navy size=2><PRE>import java.awt.*;
+import java.applet.*;
+
+<FONT color=red>//a flicker free animation with images!
+//the GIF snail with transparent color moves over the JPEG grass</FONT>
+
+public class Project11 extends Applet implements Runnable
+{
+    Thread runner;
+    Image Buffer;
+    Graphics gBuffer;
+    Image background, snail;
+    int x;
+
+    <FONT color=red>//Init is called first, do any initialisation here</FONT>
+    public void init()
+    {
+        <FONT color=red>//create graphics buffer, the size of the applet</FONT>
+        Buffer=createImage(size().width,size().height);
+        gBuffer=Buffer.getGraphics();
+
+        background=getImage(getCodeBase(),"grass.jpg");
+        snail=getImage(getCodeBase(),"snail.gif");
+    }
+
+    public void start()
+    {
+        if (runner == null)
+        {
+            runner = new Thread (this);
+            runner.start();
+        }
+    }
+
+    public void stop()
+    {
+        if (runner != null)
+        {
+            runner.stop();
+            runner = null;
+        }
+    }
+
+    public void run()
+    {
+        while(true)
+        {
+            <FONT color=red>//Thread sleeps for 15 milliseconds here</FONT>
+            try {runner.sleep(15);}
+            catch (Exception e) { }
+
+            gBuffer.drawImage(background,0,0,this);
+
+            <FONT color=red>//move the snail from left to right...</FONT>
+            x++;
+
+            <FONT color=red>//if it moves past the right border,
+            //let it reappear on the left border</FONT>
+            if(x&gt;size().width)
+                x=-125;
+
+            gBuffer.drawImage(snail,x,150,this);
+
+            repaint();
+        }
+    }
+
+    <FONT color=red>//is needed to avoid erasing the background by Java</FONT>
+    public void update(Graphics g)
+    {
+        paint(g);
+    }
+
+    public void paint(Graphics g)
+    {
+        g.drawImage (Buffer,0,0, this);
+    }
+}
+</PRE></FONT></FONT></TD></TR></TBODY></TABLE>
+      <P>To show animated sprites, you have to display several different 
+      pictures in rapid succession, to produce the animation effect. With the 
+      helper functions in this applet, you can easily load the frames of the 
+      sprite animation from a single image strip, that combines all pictures of 
+      the animation in one single picture. Look at the image file 
+      "running_dog.gif" to see what I mean. All the single pictures in the strip 
+      have to be the same size and position one below the other. To change the 
+      frames we use a ticker variable which is incremented. When a certain value 
+      is reached, the frame changes. The pictures for the animation are from the 
+      the free image collection <B>SpriteLib</B> by <A target=_blank 
+      href="http://www.arifeldman.com/">Ari Feldman</A>. The background is a 
+      tiled 80x80 pixels image. 
+      <P><APPLET code=Project12.class width=300 height=150><PARAM NAME="code" VALUE="Project12.class"><PARAM NAME="width" VALUE="300"><PARAM NAME="height" VALUE="150"><PARAM NAME="codeBase" VALUE="http://www.programming.de/java_tutorial/"></APPLET> 
+
+      <P>
+      <TABLE cellPadding=5 width="100%" bgColor=#ffffde>
+        <TBODY>
+        <TR>
+          <TD><FONT color=red size=2>//<I><B>Sourcecode</B></I> 
+            <P><FONT face=verdana color=navy size=2><PRE>import java.awt.*;
+import java.applet.*;
+<FONT color=red>//we have to import the image package!</FONT>
+import java.awt.image.*;
+
+<FONT color=red>//a flicker free aprite animation!</FONT>
+
+public class Project12 extends Applet implements Runnable
+{
+    Thread runner;
+    private Image Buffer;
+    private Graphics gBuffer;
+    int x, ticker=0, frame=0;
+
+    Image background, dogStrip, dog[];
+
+    <FONT color=red>//Init is called first, do any initialisation here</FONT>
+    public void init()
+    {
+        <FONT color=red>//create graphics buffer, the size of the applet</FONT>
+        Buffer=createImage(size().width,size().height);
+        gBuffer=Buffer.getGraphics();
+
+        background=loadImage("background.jpg");
+        dogStrip=loadImage("running_dog.gif");
+
+        dog = new Image[6];
+        extractImages(dogStrip,dog,6,100,60);
+    }
+
+    public void extractImages(Image imagestrip, Image images[],int num,int width, int height)
+    {
+        ImageProducer source = imagestrip.getSource();
+
+        for(int i=0; i&lt;num; i++)
+        {
+            ImageFilter extractFilter=new CropImageFilter(0,i*height,width,height);
+            ImageProducer producer = new FilteredImageSource(source,extractFilter);
+            images[i] = createImage(producer);
+        }
+    }
+
+    public Image loadImage(String imagename)
+    {
+        Image image=getImage(getDocumentBase(),imagename);
+        MediaTracker tracker=new MediaTracker(this);
+        tracker.addImage(image,0);
+        try
+        {
+            tracker.waitForID(0);
+        }
+        catch(InterruptedException e){}
+
+        return image;
+    }
+
+    public void start()
+    {
+        if (runner == null)
+        {
+            runner = new Thread (this);
+            runner.start();
+        }
+    }
+
+    public void stop()
+    {
+        if (runner != null)
+        {
+            runner.stop();
+            runner = null;
+        }
+    }
+
+    public void run()
+    {
+        Thread.currentThread().setPriority(Thread.MAX_PRIORITY);
+
+        while(true)
+        {
+            <FONT color=red>//Thread sleeps for 15 milliseconds here</FONT>
+            try {runner.sleep(15);}
+            catch (Exception e) { }
+
+            <FONT color=red>//here we draw the tiled background</FONT>
+            for(int i=0;i&lt;size().width;i+=80)
+                for(int j=0;j&lt;size().width;j+=80)
+                    gBuffer.drawImage(background,i,j,this);
+
+            x+=3;
+            if(x&gt;300)
+                x=-100;
+
+            ticker++;
+
+            <FONT color=red>//this sets the animation phases
+            //you can determine the speed of the phases change here</FONT>
+            if(ticker&gt;3)
+            {
+                if(frame&lt;5)
+                    frame++;
+                else
+                    frame=0;
+
+                ticker=0;
+            }
+
+            <FONT color=red>//draws the star animation</FONT>
+            gBuffer.drawImage(dog[frame],x,45,this);
+
+            repaint();
+        }
+    }
+
+    <FONT color=red>//is needed to avoid erasing the background by Java</FONT>
+    public void update(Graphics g)
+    {
+        paint(g);
+    }
+
+    public void paint(Graphics g)
+    {
+        g.drawImage (Buffer,0,0, this);
+    }
+}
+</PRE></FONT></FONT></TD></TR></TBODY></TABLE>
+      <P>
+      <TABLE borderColor=gray cellSpacing=0 cellPadding=0 bgColor=white 
+border=1>
+        <TBODY>
+        <TR>
+          <TD align=middle width=30><A 
+            href="http://www.programming.de/java_tutorial/j_tutor08.html"><IMG 
+            height=8 alt=back src="Tutorial Java by Example_files/rr.gif" 
+            width=8 border=0></A></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor01.html">1</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor02.html">2</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor03.html">3</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor04.html">4</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor05.html">5</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor06.html">6</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor07.html">7</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor08.html">8</A></FONT></TD>
+          <TD align=middle width=25 bgColor=yellow><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor09.html">9</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor10.html">10</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor11.html">11</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor12.html">12</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor13.html">13</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor14.html">14</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor15.html">15</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor16.html">16</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor17.html">17</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor18.html">18</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor19.html">19</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor20.html">20</A></FONT></TD>
+          <TD align=middle width=25><FONT size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor21.html">21</A></FONT></TD>
+          <TD align=middle width=30><A 
+            href="http://www.programming.de/java_tutorial/j_tutor10.html"><IMG 
+            height=8 alt=next src="Tutorial Java by Example_files/ff.gif" 
+            width=8 border=0></A></TD></TR></TBODY></TABLE>
+      <P>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=top width="50%"><FONT face=verdana size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutorial.html">0 - 
+            setup - getting your tools ready</A> <BR><A 
+            href="http://www.programming.de/java_tutorial/j_tutor01.html">1 - 
+            basic graphics functions</A> <BR><A 
+            href="http://www.programming.de/java_tutorial/j_tutor02.html">2 - 
+            simple methods and basic data types</A> <BR><A 
+            href="http://www.programming.de/java_tutorial/j_tutor03.html">3 - 
+            IF, ELSE and SWITCH: basic control structures</A> <BR><A 
+            href="http://www.programming.de/java_tutorial/j_tutor04.html">4 - 
+            introducing the operators</A> <BR><A 
+            href="http://www.programming.de/java_tutorial/j_tutor05.html">5 - 
+            methods with and without a return value</A> <BR><A 
+            href="http://www.programming.de/java_tutorial/j_tutor06.html">6 - 
+            using methods and basic mouse functions</A> <BR><A 
+            href="http://www.programming.de/java_tutorial/j_tutor07.html">7 - 
+            fonts, random numbers and timers</A> <BR><A 
+            href="http://www.programming.de/java_tutorial/j_tutor08.html">8 - 
+            flicker free graphics, GIF and JPEG display</A> <BR><A 
+            href="http://www.programming.de/java_tutorial/j_tutor09.html">9 - 
+            animation with GIF pictures, sprite animation</A> <BR><A 
+            href="http://www.programming.de/java_tutorial/j_tutor10.html">10 - 
+            loops, advanced color functions</A> </FONT></TD>
+          <TD vAlign=top width="50%"><FONT face=verdana size=1><A 
+            href="http://www.programming.de/java_tutorial/j_tutor11.html">11 - 
+            random colors and arrays</A> <BR><A 
+            href="http://www.programming.de/java_tutorial/j_tutor12.html">12 - 
+            digital clocks, html page parameters</A> <BR><A 
+            href="http://www.programming.de/java_tutorial/j_tutor13.html">13 - 
+            introducing classes and objects</A> <BR><A 
+            href="http://www.programming.de/java_tutorial/j_tutor14.html">14 - 
+            using the Vector class</A> <BR><A 
+            href="http://www.programming.de/java_tutorial/j_tutor15.html">15 - 
+            using mouseMove and mouseDrag</A> <BR><A 
+            href="http://www.programming.de/java_tutorial/j_tutor16.html">16 - 
+            keyboard commands and playing sound</A> <BR><A 
+            href="http://www.programming.de/java_tutorial/j_tutor17.html">17 - 
+            detecting collisions and intersections</A> <BR><A 
+            href="http://www.programming.de/java_tutorial/j_tutor18.html">18 - a 
+            Bouncing Balls applet</A> <BR><A 
+            href="http://www.programming.de/java_tutorial/j_tutor19.html">19 - 
+            fun with letters and words</A> <BR><A 
+            href="http://www.programming.de/java_tutorial/j_tutor20.html">20 - 
+            rotating lines and polygons</A> <BR><A 
+            href="http://www.programming.de/java_tutorial/j_tutor21.html">21 - 
+            sorting and shuffling</A> 
+  </FONT></TD></TR></TBODY></TABLE></P></FONT></TD></TR></TBODY></TABLE><BR>
+<CENTER><FONT color=blue size=2>© 2000 by <A target=_top 
+href="http://www.wallroth.com/"><U>Johannes Wallroth</U></A> <BR><A target=_top 
+href="http://www.programming.de/index.html">http://www.programming.de/index.html</A></FONT><BR><FONT 
+size=1><A 
+href="mailto:watson@programming.de">mailto:watson@programming.de</A></FONT></CENTER><BR></BODY></HTML>

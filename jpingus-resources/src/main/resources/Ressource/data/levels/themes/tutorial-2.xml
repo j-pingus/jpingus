@@ -1,0 +1,177 @@
+<?xml version="1.0"  encoding="ISO-8859-1"?>
+<pingus-level>
+<global>
+<levelname lang="en">Not really a level ...</levelname>
+<description lang="en">This is entry point for tutorial levels
+    </description>
+<author>gev,fka</author>
+<number-of-pingus>0</number-of-pingus>
+<number-to-save>0</number-to-save>
+<time>-1</time>
+<width>640</width>
+<height>480</height>
+<difficulty>40</difficulty>
+<playable>1</playable>
+<comment>no comments yet</comment>
+<music>pingus-6.it</music>
+</global>
+<action-list>
+</action-list>
+<entrance><position><x-pos>0</x-pos><y-pos>0</y-pos><z-pos>0</z-pos></position><type>generic</type><direction>right</direction><release-rate>150</release-rate><owner-id>0</owner-id></entrance><start-position>
+<position>
+<x-pos>-94</x-pos>
+<y-pos>-106</y-pos>
+<z-pos>1000</z-pos>
+</position>
+</start-position>
+<background type="surface">
+	
+		<surface>
+			<resource type="datafile">
+				<resource-datafile>levels</resource-datafile>
+				<resource-ident>islands/rock</resource-ident>
+				<modifier>ROT0</modifier>
+			</resource>
+		</surface>
+	
+	<position>
+		<x-pos>0</x-pos>
+		<y-pos>0</y-pos>
+		<z-pos>-150</z-pos>
+	</position>
+	</background><level type="level">
+	
+		<surface>
+			<resource type="datafile">
+				<resource-datafile>levels</resource-datafile>
+				<resource-ident>signs/selector</resource-ident>
+				<modifier>ROT0</modifier>
+			</resource>
+		</surface>
+	<ref>tutorial/snow7-grumbel.xml</ref><behavior>jpingus.behariours.GameDetector</behavior>
+	<position>
+		<x-pos>350</x-pos>
+		<y-pos>309</y-pos>
+		<z-pos>-50</z-pos>
+	</position>
+	</level><level type="level">
+	
+		<surface>
+			<resource type="datafile">
+				<resource-datafile>levels</resource-datafile>
+				<resource-ident>signs/selector</resource-ident>
+				<modifier>ROT0</modifier>
+			</resource>
+		</surface>
+	<ref>tutorial/snow8-grumbel.xml</ref><behavior>jpingus.behariours.GameDetector</behavior>
+	<position>
+		<x-pos>434</x-pos>
+		<y-pos>254</y-pos>
+		<z-pos>-50</z-pos>
+	</position>
+	</level><level type="level">
+	
+		<surface>
+			<resource type="datafile">
+				<resource-datafile>levels</resource-datafile>
+				<resource-ident>signs/selector</resource-ident>
+				<modifier>ROT0</modifier>
+			</resource>
+		</surface>
+	<ref>tutorial/snow9-grumbel.xml</ref><behavior>jpingus.behariours.GameDetector</behavior>
+	<position>
+		<x-pos>240</x-pos>
+		<y-pos>246</y-pos>
+		<z-pos>-50</z-pos>
+	</position>
+	</level><level type="level">
+	
+		<surface>
+			<resource type="datafile">
+				<resource-datafile>levels</resource-datafile>
+				<resource-ident>signs/selector</resource-ident>
+				<modifier>ROT0</modifier>
+			</resource>
+		</surface>
+	<ref>tutorial/snow10-grumbel.xml</ref><behavior>jpingus.behariours.GameDetector</behavior>
+	<position>
+		<x-pos>484</x-pos>
+		<y-pos>148</y-pos>
+		<z-pos>-50</z-pos>
+	</position>
+	</level><level type="level">
+	
+		<surface>
+			<resource type="datafile">
+				<resource-datafile>levels</resource-datafile>
+				<resource-ident>signs/selector</resource-ident>
+				<modifier>ROT0</modifier>
+			</resource>
+		</surface>
+	<ref>tutorial/snow11-grumbel.xml</ref><behavior>jpingus.behariours.GameDetector</behavior>
+	<position>
+		<x-pos>324</x-pos>
+		<y-pos>100</y-pos>
+		<z-pos>-50</z-pos>
+	</position>
+	</level><level type="level">
+	
+		<surface>
+			<resource type="datafile">
+				<resource-datafile>levels</resource-datafile>
+				<resource-ident>signs/selector</resource-ident>
+				<modifier>ROT0</modifier>
+			</resource>
+		</surface>
+	<ref>tutorial/snow12-grumbel.xml</ref><behavior>jpingus.behariours.GameDetector</behavior>
+	<position>
+		<x-pos>34</x-pos>
+		<y-pos>124</y-pos>
+		<z-pos>-50</z-pos>
+	</position>
+	</level><level type="level">
+	
+		<surface>
+			<resource type="datafile">
+				<resource-datafile>levels</resource-datafile>
+				<resource-ident>signs/selector</resource-ident>
+				<modifier>ROT0</modifier>
+			</resource>
+		</surface>
+	<ref>tutorial/snow7-grumbel.xml</ref><behavior>jpingus.behariours.GameDetector</behavior>
+	<position>
+		<x-pos>141</x-pos>
+		<y-pos>209</y-pos>
+		<z-pos>-50</z-pos>
+	</position>
+	</level><theme type="theme">
+	
+		<surface>
+			<resource type="datafile">
+				<resource-datafile>global</resource-datafile>
+				<resource-ident>Hotspots/left_arrow</resource-ident>
+				<modifier>ROT0</modifier>
+			</resource>
+		</surface>
+	<ref>themes/tutorial.xml</ref><behavior>jpingus.behariours.ThemeDetector</behavior>
+	<position>
+		<x-pos>10</x-pos>
+		<y-pos>390</y-pos>
+		<z-pos>0</z-pos>
+	</position>
+	</theme><theme type="theme">
+	
+		<surface>
+			<resource type="datafile">
+				<resource-datafile>global</resource-datafile>
+				<resource-ident>Hotspots/right_arrow</resource-ident>
+				<modifier>ROT0</modifier>
+			</resource>
+		</surface>
+	<ref>themes/tutorial-3.xml</ref><behavior>jpingus.behariours.ThemeDetector</behavior><hidden/>
+	<position>
+		<x-pos>535</x-pos>
+		<y-pos>390</y-pos>
+		<z-pos>0</z-pos>
+	</position>
+	</theme></pingus-level>

@@ -1,0 +1,56 @@
+<?xml version="1.0"  encoding="ISO-8859-1"?>
+<pingus-level>
+<global>
+<levelname lang="en">title here</levelname>
+<description lang="en">desciption here</description>
+<author>gev,fka</author>
+<number-of-pingus>10</number-of-pingus>
+<number-to-save>5</number-to-save>
+<time>-1</time>
+<width>800</width>
+<height>600</height>
+<difficulty>0</difficulty>
+<playable>1</playable>
+<comment>no comments yet</comment>
+<music>null</music>
+</global>
+<action-list>
+</action-list>
+<start-position>
+<position>
+<x-pos>48</x-pos>
+<y-pos>42</y-pos>
+<z-pos>1000</z-pos>
+</position>
+</start-position>
+<background type="surface">
+	
+		<surface>
+			<resource type="datafile">
+				<resource-datafile>levels</resource-datafile>
+				<resource-ident>islands/desert</resource-ident>
+				<modifier>ROT0</modifier>
+			</resource>
+		</surface>
+	
+	<position>
+		<x-pos>0</x-pos>
+		<y-pos>0</y-pos>
+		<z-pos>-150</z-pos>
+	</position>
+	</background><level type="level">
+	
+		<surface>
+			<resource type="datafile">
+				<resource-datafile>levels</resource-datafile>
+				<resource-ident>signs/selector</resource-ident>
+				<modifier>ROT0</modifier>
+			</resource>
+		</surface>
+	<ref>playable/desert2.xml</ref><behavior>jpingus.behariours.GameDetector</behavior>
+	<position>
+		<x-pos>650</x-pos>
+		<y-pos>250</y-pos>
+		<z-pos>0</z-pos>
+	</position>
+	</level></pingus-level>

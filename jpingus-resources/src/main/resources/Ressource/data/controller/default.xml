@@ -1,0 +1,65 @@
+<pingus-controller>
+  <controller-config>
+    <standard-pointer><mouse-pointer /></standard-pointer>
+
+    <primary-button><mouse-button button="0"/></primary-button>
+
+    <secondary-button>
+      <mouse-button button="2"/>
+    </secondary-button>
+
+    <pause-button>
+      <key-button key="P"/>
+    </pause-button>
+
+    <fast-forward-button>
+      <multiple-button>
+        <key-button key="F"/>
+        <key-button key="SPACE"/>
+      </multiple-button>
+    </fast-forward-button>
+
+    <armageddon-button>
+      <key-button key="A"/>
+    </armageddon-button>
+
+    <escape-button>
+      <key-button key="ESCAPE"/>
+    </escape-button>
+
+    <scroller>
+      <axis-scroller speed="1000">
+        <button-axis angle="90">
+          <key-button key="DOWN"/>
+          <key-button key="UP"/>
+        </button-axis>      
+        <button-axis angle="0">
+          <key-button key="RIGHT"/>
+          <key-button key="LEFT"/>
+        </button-axis>
+      </axis-scroller>
+    </scroller>
+
+    <action-buttons>
+      <action-button><key-button key="1"/></action-button>
+      <action-button><key-button key="2"/></action-button>
+      <action-button><key-button key="3"/></action-button>
+      <action-button><key-button key="4"/></action-button>
+      <action-button><key-button key="5"/></action-button>
+      <action-button><key-button key="6"/></action-button>
+      <action-button><key-button key="7"/></action-button>
+      <action-button><key-button key="8"/></action-button>
+      <action-button><key-button key="9"/></action-button>
+      <action-button><key-button key="0"/></action-button>
+    </action-buttons>
+
+    <action-up>
+      <key-button key="PAGEUP"/>
+    </action-up>
+
+    <action-down>
+      <key-button key="PAGEDOWN"/>
+    </action-down>
+
+  </controller-config>
+</pingus-controller>
